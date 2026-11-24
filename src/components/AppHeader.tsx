@@ -194,7 +194,7 @@ export function AppHeader({
                 ...(!auth || auth.role === "student" ? [studentItem] : []),
                 {
                   href: auth?.role === "teacher" ? "/teacher" : "/sign-in?role=teacher",
-                  label: homeLayout && !isTe ? "For Teachers" : dict.nav.forTeachers,
+                  label: dict.nav.forTeachers,
                   active: pathname.startsWith("/teacher"),
                 },
                 { href: "/about", label: isTe ? "గురించి" : "About", active: pathname === "/about" },

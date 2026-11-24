@@ -142,7 +142,7 @@ const EN_IN: LocalizedStrings = {
   brandName: "G1 Virtual Labs",
   nav: {
     laboratories: "Laboratories",
-    forTeachers: "For teachers",
+    forTeachers: "Teacher",
     help: "Help",
     signIn: "Sign in",
     signOut: "Sign out",

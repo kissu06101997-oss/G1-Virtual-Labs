@@ -5,7 +5,7 @@ Every visible button, tab, link, input, and disclosure control in the upgraded a
 | Route | Control / Component | Action & Backing Handler |
 |---|---|---|
 | Global Header (`AppHeader`) | G1 Virtual Labs logo (`BrandLogo`) | Navigates to `/` in the standard and player headers |
-| Global Header (`AppHeader`) | Primary Nav (`Laboratories`, `For teachers`, `About`, `Help`, `Contact Us` and role links) | Opens the selected workspace, catalogue or public route. `Contact Us` opens `/contact` and its English label stays on one line. |
+| Global Header (`AppHeader`) | Primary Nav (`Laboratories`, `Teacher`, `About`, `Help`, `Contact Us` and role links) | Opens the selected workspace, catalogue or public route. `Contact Us` opens `/contact` and its English label stays on one line. |
 | Global Header (`AppHeader`) | `తెలుగు` or `English` (`LocaleToggle`) | Shows the language it switches to. `POST /api/locale` updates the `g1_locale` cookie and refreshes the current page. |
 | Global Header (`AppHeader`) | `Student` | Opens `/student/profile` or signs a visitor in as a student first. |
 | Global Header (`AppHeader`) | `Sign in` / Non-student role badge / `Sign out` | Routes to `/sign-in` or workspace; `POST /api/auth/sign-out` revokes DB session and redirects to `/` |
