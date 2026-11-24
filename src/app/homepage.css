@@ -96,6 +96,7 @@
   transition: transform .18s, border-color .18s;
 }
 .g1-class-nav a svg { flex-shrink: 0; color: var(--class-accent); }
+.g1-class-nav:lang(en) a { white-space: nowrap; }
 .g1-class-nav a:hover { transform: translateY(-2px); border-color: var(--class-accent); }
 .g1-class-nav a:active { transform: translateY(1px); }
 .g1-class-nav a[aria-current] { color: #fff; background: var(--g1-teal-dark); border-color: var(--g1-teal-dark); box-shadow: none; }
@@ -464,6 +465,14 @@ html[lang="te"] .g1-home-subject-copy p { line-height: 1.52; }
 @media (max-width: 750px) {
   .g1-class-nav ul { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .g1-home-activity-list { grid-template-columns: repeat(auto-fit, minmax(min(100%, 174px), 1fr)); }
+}
+@media (max-width: 800px) {
+  .g1-class-nav:lang(en) ul {
+    grid-template-columns: repeat(7, minmax(6rem, 1fr));
+    overflow-x: auto;
+    padding: 6px 6px 10px;
+    scrollbar-width: thin;
+  }
 }
 @media (max-width: 640px) {
   .g1-home-intro { grid-template-columns: 1fr; gap: 9px; }

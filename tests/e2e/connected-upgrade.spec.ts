@@ -146,7 +146,7 @@ test("public navigation, responsive reflow and dependent discovery", async ({ pa
 
 test("all seven stages carry their class into the illustrated subject cards", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
-  for (const [index, label] of ["Class 6", "Class 7", "Class 8", "Class 9", "Class 10", "Inter 1st Year", "Inter 2nd Year"].entries()) {
+  for (const [index, label] of ["Class 6", "Class 7", "Class 8", "Class 9", "Class 10", "Inter I", "Inter II"].entries()) {
     const grade = index + 6;
     await page.goto("/");
     await page.getByTestId("education-stage-rail").getByRole("link", { name: label, exact: true }).press("Enter");
@@ -159,12 +159,39 @@ test("all seven stages carry their class into the illustrated subject cards", as
     }
     await page.getByTestId("home-subject-physics").locator("img").click();
     await expect(page).toHaveURL("/laboratories/physics?grade=" + grade + "&from=class");
-    await expect(page.getByTestId("fixed-class")).toHaveText(label.replace("Inter ", "Intermediate "));
+    const className = grade === 11 ? "Intermediate 1st Year" : grade === 12 ? "Intermediate 2nd Year" : label;
+    await expect(page.getByTestId("fixed-class")).toHaveText(className);
     await expect(page.getByTestId("fixed-subject")).toHaveText("Physics");
     await expect(page.getByRole("combobox", { name: "Class", exact: true })).toHaveCount(0);
     await page.getByRole("link", { name: "Back to class subjects" }).click();
     await expect(page).toHaveURL("/laboratories?grade=" + grade);
   }
+});
+
+test("the English homepage class tabs stay equal-sized in one row", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  const rail = page.getByTestId("education-stage-rail");
+  const tabs = rail.getByRole("link");
+  await expect(tabs).toHaveText(["Class 6", "Class 7", "Class 8", "Class 9", "Class 10", "Inter I", "Inter II"]);
+  for (const width of [390, 768, 1061, 1536]) {
+    await page.setViewportSize({ width, height: 900 });
+    await expect.poll(() => tabs.evaluateAll(links => {
+      const bounds = links.map(link => link.getBoundingClientRect());
+      const spread = (field: "top" | "width" | "height") => {
+        const values = bounds.map(rect => rect[field]);
+        return Math.max(...values) - Math.min(...values) < 1;
+      };
+      return spread("top") && spread("width") && spread("height") &&
+        document.documentElement.scrollWidth <= innerWidth;
+    }), { message: `One even row at ${width}px` }).toBe(true);
+  }
+  await page.setViewportSize({ width: 390, height: 844 });
+  const last = rail.getByRole("link", { name: "Inter II", exact: true });
+  await last.focus();
+  await expect(last).toBeInViewport({ ratio: 1 });
+  await last.press("Enter");
+  await expect(page).toHaveURL(/\/laboratories\?grade=12$/);
 });
 
 test("homepage cards open separate Simulation and Experiment workspaces", async ({ page }) => {

@@ -9,7 +9,7 @@ Every visible button, tab, link, input, and disclosure control in the upgraded a
 | Global Header (`AppHeader`) | `తెలుగు` or `English` (`LocaleToggle`) | Shows the language it switches to. `POST /api/locale` updates the `g1_locale` cookie and refreshes the current page. |
 | Global Header (`AppHeader`) | `Sign in` / Role badge / `Sign out` | Routes to `/sign-in` or workspace; `POST /api/auth/sign-out` revokes DB session and redirects to `/` |
 | Global Header (`AppHeader`) | Mobile Menu Toggle & Drawer | Opens/closes mobile navigation with `aria-current="page"` and `Escape` key dismissal + focus restoration |
-| `/` (Homepage) | Explore by class (seven stage links) | Opens the class-specific chooser with three subject cards and a Back link to Home. |
+| `/` (Homepage) | Explore by class (seven stage links) | Opens the class-specific chooser with three subject cards and a Back link to Home. The English row includes Inter I and Inter II and scrolls on narrow screens. |
 | `/` (Homepage) | `Browse laboratories →` and guest `Sign in` | Opens the laboratory catalogue or the student sign-in flow |
 | `/` (Homepage) | Subject Cards (`Chemistry`, `Physics`, `Biology`) | Navigates to `/laboratories/chemistry`, `/laboratories/physics`, `/laboratories/biology` |
 | `/` (Homepage) | Simulation and Experiment cards | Each entire card opens its own mode page at `/modes/simulation` or `/modes/experiment`. |

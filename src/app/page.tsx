@@ -9,7 +9,7 @@ import { HomeAtom } from "@/components/HomeAtom";
 import { HomeSubjectCards } from "@/components/HomeSubjectCards";
 import { scienceSubjects } from "@/components/ScienceDestinations";
 import { getCurrentSession, getRequestLocale } from "@/lib/auth";
-import { EDUCATION_STAGES, resolveEducationStage } from "@/lib/education-stages";
+import { EDUCATION_STAGES, resolveEducationStage, type EducationStageId } from "@/lib/education-stages";
 import { getDictionary, getExperimentCopy } from "@/lib/i18n";
 import { listStudentActivity } from "@/lib/student-activity";
 
@@ -18,6 +18,11 @@ const subjectDescriptions = {
   physics: { en: "Explore forces, motion, energy and physical laws.", te: "బలాలు, చలనం, శక్తి మరియు భౌతిక నియమాలను అన్వేషించండి." },
   biology: { en: "Explore life, cells, systems and the natural world.", te: "జీవం, కణాలు, జీవ వ్యవస్థలు మరియు ప్రకృతిని అన్వేషించండి." },
 } as const;
+
+const englishIntermediateTabLabels: Partial<Record<EducationStageId, string>> = {
+  "intermediate-1": "Inter I",
+  "intermediate-2": "Inter II",
+};
 
 export default async function HomePage({ searchParams }: { searchParams: Promise<{ grade?: string; stage?: string }> }) {
   const [auth, locale, params] = await Promise.all([getCurrentSession(), getRequestLocale(), searchParams]);
@@ -61,7 +66,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
                   <BookOpen size={23} strokeWidth={1.75} aria-hidden="true" />
                   {te && stage.labelTe !== stage.shortLabelTe
                     ? <><span className="g1-class-full-te">{stage.labelTe}</span><span className="g1-class-short-te">{stage.shortLabelTe}</span></>
-                    : te ? stage.labelTe : stage.shortLabelEn}
+                    : te ? stage.labelTe : englishIntermediateTabLabels[stage.id] ?? stage.shortLabelEn}
                 </Link>
               </li>
             ))}
