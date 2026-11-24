@@ -194,6 +194,65 @@ test("the English homepage class tabs stay equal-sized in one row", async ({ pag
   await expect(page).toHaveURL(/\/laboratories\?grade=12$/);
 });
 
+test("Student opens Profile and Dashboard, with private persistent profile edits", async ({ page, browser, request }) => {
+  test.skip(process.env.G1_ISOLATED_UPGRADE_QA !== "true", "Changes a profile in the isolated synthetic database.");
+  const profileEndpoint = "/api/student/profile";
+  const account = "student.b@school-vijayawada-02.test";
+  const updatedName = "Student B Profile QA";
+
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  const primary = page.getByRole("navigation", { name: "Primary navigation" });
+  await primary.getByRole("link", { name: "Student", exact: true }).press("Enter");
+  await expect(page).toHaveURL(/\/sign-in\?next=\/student\/profile&role=student$/);
+  expect((await request.put(profileEndpoint, { data: { displayName: updatedName } })).status()).toBe(401);
+
+  await page.locator("#signin-email").fill(account);
+  await page.locator("#signin-password").fill(fixturePassword);
+  await page.getByTestId("signin-submit").click();
+  await expect(page).toHaveURL("/student/profile");
+  await expect(primary.getByRole("link", { name: "Student", exact: true })).toHaveCount(1);
+  await expect(page.getByRole("link", { name: "Student Dashboard", exact: true })).toHaveCount(0);
+
+  const studentNav = page.getByRole("navigation", { name: "Student account" });
+  const name = page.getByRole("textbox", { name: "Display name" });
+  await expect(studentNav.getByRole("link", { name: "Profile" })).toHaveAttribute("aria-current", "page");
+  await expect(page.getByText(account, { exact: true })).toBeVisible();
+  expect((await page.request.put(profileEndpoint, { data: { displayName: updatedName } })).status()).toBe(400);
+
+  await capture(page, "student-profile-desktop");
+  await name.fill(updatedName);
+  await page.getByRole("button", { name: "Save changes" }).click();
+  await expect(page.getByRole("status")).toHaveText("Profile saved.");
+  await page.reload();
+  await expect(name).toHaveValue(updatedName);
+  await studentNav.getByRole("link", { name: "Dashboard" }).click();
+  await expect(page).toHaveURL("/student");
+  await expect(studentNav.getByRole("link", { name: "Dashboard" })).toHaveAttribute("aria-current", "page");
+  await expect(page.getByRole("heading", { name: "Welcome, " + updatedName })).toBeVisible();
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.getByTestId("mobile-menu-toggle").click();
+  const mobileNav = page.getByRole("navigation", { name: "Mobile navigation" });
+  await expect(mobileNav.getByRole("link", { name: "Student", exact: true })).toHaveCount(1);
+  await mobileNav.getByRole("link", { name: "Student", exact: true }).click();
+  await expect(page).toHaveURL("/student/profile");
+  await expect(page.getByTestId("mobile-nav-drawer")).toHaveCount(0);
+  await expect(name).toHaveValue(updatedName);
+  await capture(page, "student-profile-mobile");
+
+  const teacher = await browser.newContext();
+  try {
+    const teacherPage = await teacher.newPage();
+    await login(teacherPage, "teacher.a@school-guntur-01.test");
+    expect((await teacherPage.request.get("/student/profile")).status()).toBe(404);
+    const denied = await teacherPage.request.put(profileEndpoint, { data: { displayName: updatedName } });
+    expect(denied.status()).toBe(404);
+  } finally {
+    await teacher.close();
+  }
+});
+
 test("homepage cards open separate Simulation and Experiment workspaces", async ({ page }) => {
   await page.goto("/");
   const simulation = page.getByTestId("home-mode-simulation");
@@ -464,7 +523,7 @@ test("creator, independent reviewer, gated learning and authoritative trial work
   expect((await student.request.get("/creator")).status()).toBe(404);
   await student.goto("/");
   await expect(student.getByTestId("education-stage-rail").locator("[aria-current]")).toHaveCount(0);
-  await expect(student.getByRole("link", { name: "Student Dashboard" })).toBeVisible();
+  await expect(student.getByRole("link", { name: "Student", exact: true })).toHaveAttribute("href", "/student/profile");
   await student.goto("/student");
   await capture(student, "student-dashboard-after-desktop");
   await student.goto("/laboratories/physics");

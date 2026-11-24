@@ -1,6 +1,7 @@
 "use client";
 
 import { GlassBack } from "@/components/GlassBack";
+import { StudentAccountNav } from "@/components/StudentAccountNav";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import {
@@ -190,6 +191,7 @@ export function StudentDashboardClient({
       {/* Main student content */}
       <main id="main-content" data-workspace="student" className="g1-premium min-w-0 flex-1 px-4 py-8 sm:px-8 lg:px-10">
         <GlassBack href="/" label={locale === "te-IN" ? "ముఖపుటకు తిరిగి" : "Back to home"} />
+        <StudentAccountNav locale={locale} current="dashboard" />
         <div className="g1-card g1-student-welcome g1-workspace-banner flex flex-wrap items-start justify-between gap-4">
           <div>
             <div id="top" className="g1-eyebrow">

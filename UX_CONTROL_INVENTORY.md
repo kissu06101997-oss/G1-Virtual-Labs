@@ -5,9 +5,10 @@ Every visible button, tab, link, input, and disclosure control in the upgraded a
 | Route | Control / Component | Action & Backing Handler |
 |---|---|---|
 | Global Header (`AppHeader`) | G1 Virtual Labs logo (`BrandLogo`) | Navigates to `/` in the standard and player headers |
-| Global Header (`AppHeader`) | Primary Nav (`Laboratories`, `For teachers`, `About`, `Help`, `Contact Us` and role links) | Opens the selected workspace, catalogue or public route. `Contact Us` opens `/contact` and is active there. |
+| Global Header (`AppHeader`) | Primary Nav (`Laboratories`, `For teachers`, `About`, `Help`, `Contact Us` and role links) | Opens the selected workspace, catalogue or public route. `Contact Us` opens `/contact` and its English label stays on one line. |
 | Global Header (`AppHeader`) | `తెలుగు` or `English` (`LocaleToggle`) | Shows the language it switches to. `POST /api/locale` updates the `g1_locale` cookie and refreshes the current page. |
-| Global Header (`AppHeader`) | `Sign in` / Role badge / `Sign out` | Routes to `/sign-in` or workspace; `POST /api/auth/sign-out` revokes DB session and redirects to `/` |
+| Global Header (`AppHeader`) | `Student` | Opens `/student/profile` or signs a visitor in as a student first. |
+| Global Header (`AppHeader`) | `Sign in` / Non-student role badge / `Sign out` | Routes to `/sign-in` or workspace; `POST /api/auth/sign-out` revokes DB session and redirects to `/` |
 | Global Header (`AppHeader`) | Mobile Menu Toggle & Drawer | Opens/closes mobile navigation with `aria-current="page"` and `Escape` key dismissal + focus restoration |
 | `/` (Homepage) | Explore by class (seven stage links) | Opens the class-specific chooser with three subject cards and a Back link to Home. The English row includes 1st Inter and 2nd Inter and scrolls on narrow screens. |
 | `/` (Homepage) | `Browse laboratories →` and guest `Sign in` | Opens the laboratory catalogue or the student sign-in flow |
@@ -41,6 +42,7 @@ Every visible button, tab, link, input, and disclosure control in the upgraded a
 | Learning journey | Stage selection opens saved or next available content. Advance records the next server-verified milestone. Guided lab controls use the existing action API. The assessment submits five recorded choices once. |
 | Experiment player | Record comparison executes a bounded engine action. Use control settings restores input values. Confirmed trial history reads saved results. |
 | Student and teacher dashboards | Student progress links open the saved Simulation and the overview for unlocked experiments. Teachers can select an authorized class and open its roster. |
+| Student account | Profile opens `/student/profile`. Save changes updates the signed-in student’s display name. Dashboard opens the existing student workspace at `/student`. |
 | Student activity | Search, mode selection and pagination query owned history. Resume and Review open the existing authorized player. |
 | Creator | Save draft and autosave persist revisions. Preview displays bilingual draft contents, validation shows specific errors, and submit starts independent review. Lesson and manifest controls validate the chosen mapping and model. |
 | Media | Upload, pause, resume and cancel operate on a creator-owned local asset. A verified upload becomes selectable in the current editor tab. Playback controls and captions use verified media. |

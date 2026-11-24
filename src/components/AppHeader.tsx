@@ -35,6 +35,11 @@ export function AppHeader({
   const dict = getDictionary(locale);
   const isTe = locale === "te-IN";
   const contactItem = { href: "/contact", label: isTe ? "మమ్మల్ని సంప్రదించండి" : "Contact Us", active: pathname === "/contact" };
+  const studentItem = {
+    href: auth ? "/student/profile" : "/sign-in?next=/student/profile&role=student",
+    label: isTe ? "విద్యార్థి" : "Student",
+    active: pathname === "/student/profile",
+  };
   const [mobileOpen, setMobileOpen] = useState(false);
   const [signingOut, setSigningOut] = useState(false);
   const menuBtnRef = useRef<HTMLButtonElement | null>(null);
@@ -75,11 +80,7 @@ export function AppHeader({
           : "/admin";
 
   const roleBadgeLabel =
-    auth?.role === "creator" ? "Creator Workspace" : auth?.role === "student"
-      ? isTe
-        ? "విద్యార్థి ఖాతా"
-        : "Student"
-      : auth?.role === "teacher"
+    auth?.role === "creator" ? "Creator Workspace" : auth?.role === "teacher"
         ? isTe
           ? "ఉపాధ్యాయ ఖాతా"
           : "Teacher"
@@ -132,7 +133,7 @@ export function AppHeader({
   const primaryItems: Array<{ href: string; label: string; active: boolean }> =
     variant === "student"
       ? [
-          { href: "/student", label: dict.nav.dashboard, active: pathname === "/student" },
+          studentItem,
           { href: "/student#assignments", label: dict.nav.assignments, active: false },
           { href: "/student#results", label: dict.nav.results, active: false },
           { href: "/help", label: dict.nav.help, active: pathname === "/help" },
@@ -190,11 +191,7 @@ export function AppHeader({
                   active:
                     pathname.startsWith("/laboratories") || pathname.startsWith("/experiments"),
                 },
-                ...(!auth || auth.role === "student" ? [{
-                  href: auth ? "/student" : "/sign-in?next=/student&role=student",
-                  label: isTe ? "విద్యార్థి డ్యాష్‌బోర్డ్" : "Student Dashboard",
-                  active: pathname.startsWith("/student"),
-                }] : []),
+                ...(!auth || auth.role === "student" ? [studentItem] : []),
                 {
                   href: auth?.role === "teacher" ? "/teacher" : "/sign-in?role=teacher",
                   label: homeLayout && !isTe ? "For Teachers" : dict.nav.forTeachers,
@@ -228,7 +225,7 @@ export function AppHeader({
             <Link
               key={item.href + item.label}
               href={item.href}
-              className={`rounded-lg px-2 py-1.5 text-center text-xs leading-tight font-bold text-balance transition-colors lg:text-sm ${
+              className={`rounded-lg px-2 py-1.5 text-center text-xs leading-tight font-bold text-balance transition-colors lg:text-sm ${item.href === "/contact" && !isTe ? "shrink-0 whitespace-nowrap " : ""}${
                 item.active
                   ? "text-[#007875]"
                   : "text-[#233c56] hover:text-[#007875]"
@@ -244,12 +241,14 @@ export function AppHeader({
           <LocaleToggle locale={locale} />
           {auth ? (
             <div className="flex items-center gap-2">
-              <Link
-                href={workspaceHref}
-                className="inline-flex min-h-[40px] items-center whitespace-nowrap rounded-xl bg-[#e5f7fb] px-3 py-1.5 text-xs font-extrabold tracking-wide text-[#0b6878] transition-colors hover:bg-[#d7f1f8]"
-              >
-                {roleBadgeLabel}
-              </Link>
+              {auth.role !== "student" && (
+                <Link
+                  href={workspaceHref}
+                  className="inline-flex min-h-[40px] items-center whitespace-nowrap rounded-xl bg-[#e5f7fb] px-3 py-1.5 text-xs font-extrabold tracking-wide text-[#0b6878] transition-colors hover:bg-[#d7f1f8]"
+                >
+                  {roleBadgeLabel}
+                </Link>
+              )}
               <button
                 type="button"
                 onClick={handleSignOut}
@@ -314,7 +313,7 @@ export function AppHeader({
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
                 aria-current={item.active ? "page" : undefined}
-                className={`rounded-xl px-3.5 py-2.5 text-sm font-bold ${
+                className={`rounded-xl px-3.5 py-2.5 text-sm font-bold ${item.href === "/contact" && !isTe ? "whitespace-nowrap " : ""}${
                   item.active ? "bg-[#e9f8fb] text-[#007875]" : "text-[#233c56]"
                 }`}
               >
@@ -324,13 +323,15 @@ export function AppHeader({
             <div className="mt-2 border-t border-[#e6f0f6] pt-3">
               {auth ? (
                 <div className="flex flex-col gap-2">
-                  <Link
-                    href={workspaceHref}
-                    onClick={() => setMobileOpen(false)}
-                    className="rounded-xl bg-[#e5f7fb] px-3.5 py-2.5 text-sm font-bold text-[#0b6878]"
-                  >
-                    {roleBadgeLabel} — {auth.displayName}
-                  </Link>
+                  {auth.role !== "student" && (
+                    <Link
+                      href={workspaceHref}
+                      onClick={() => setMobileOpen(false)}
+                      className="rounded-xl bg-[#e5f7fb] px-3.5 py-2.5 text-sm font-bold text-[#0b6878]"
+                    >
+                      {roleBadgeLabel} — {auth.displayName}
+                    </Link>
+                  )}
                   <button
                     type="button"
                     onClick={handleSignOut}

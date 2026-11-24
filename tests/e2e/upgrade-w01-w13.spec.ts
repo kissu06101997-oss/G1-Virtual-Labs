@@ -201,6 +201,13 @@ test.describe("G1 Virtual Labs Premium Upgrade Verification (W01–W13)", () => 
           const [link, button] = await Promise.all([contact.boundingBox(), language.boundingBox()]);
           return link && button ? button.x - (link.x + link.width) : -1;
         }, { message: `Header gap at ${width}px in ${documentLanguage}` }).toBeGreaterThanOrEqual(4);
+        if (documentLanguage === "en") {
+          expect(await contact.evaluate(link => {
+            const text = document.createRange();
+            text.selectNodeContents(link);
+            return text.getClientRects().length;
+          }), `Contact Us at ${width}px`).toBe(1);
+        }
       }
       await language.click();
     }

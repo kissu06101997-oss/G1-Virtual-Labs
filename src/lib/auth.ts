@@ -84,7 +84,8 @@ export async function getCurrentSession(): Promise<AuthContext | null> {
     `SELECT
        s.principal_id,
        c.email,
-       c.display_name,
+       CASE WHEN s.active_role = 'student' THEN COALESCE(sl.profile_display_name, c.display_name)
+            ELSE c.display_name END AS display_name,
        c.is_synthetic,
        p.preferred_locale,
        s.active_role,
