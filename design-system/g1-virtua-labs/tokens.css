@@ -1,0 +1,27 @@
+/* G1 Virtual Labs — G1 Scientific Observatory Design Tokens */
+:root {
+  --g1-bg: #F4FAFE;
+  --g1-surface: #FFFFFF;
+  --g1-surface-warm: #FBFAF5;
+  --g1-ice-section: #E6F2FA;
+  --g1-deep-ice: #D8EAF4;
+  --g1-ink: #0C2444;
+  --g1-ink-muted: #38546C;
+  --g1-teal: #007875;
+  --g1-teal-dark: #00635F;
+  --g1-sim-blue: #0663AB;
+  --g1-sim-blue-bg: #EAF5FF;
+  --g1-sim-blue-border: #C6E2F7;
+  --g1-exp-green: #046C49;
+  --g1-exp-green-bg: #E8F7EF;
+  --g1-exp-green-border: #C4E8D4;
+  --g1-border-strong: #7894AA;
+  --g1-border: #CBDDE8;
+  --g1-focus-ring: #0663AB;
+  --g1-error: #9B2119;
+  --g1-error-bg: #FFF1EE;
+  --g1-amber: #805100;
+  --g1-amber-bg: #FFF4D7;
+  --g1-success: #046C49;
+  --g1-success-bg: #E8F7EF;
+}

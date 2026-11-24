@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="9 -58 228 228" role="img" aria-labelledby="g1-title">
+  <title id="g1-title">G1 Virtual Labs</title>
+  <defs>
+    <linearGradient id="teal" x1="18" y1="10" x2="132" y2="106" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0c9278"/><stop offset=".22" stop-color="#00b6a5"/><stop offset=".49" stop-color="#008fa5"/><stop offset=".8" stop-color="#14c1dd"/><stop offset="1" stop-color="#008384"/>
+    </linearGradient>
+    <linearGradient id="one" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#1766ac"/><stop offset=".3" stop-color="#071941"/><stop offset=".78" stop-color="#004f9b"/><stop offset="1" stop-color="#04bdea"/>
+    </linearGradient>
+  </defs>
+  <path data-material="teal" fill="url(#teal)" d="M18 53.8C18 51 20.4 49.1 23.1 49.1C26 49.1 28.1 51.2 28.1 53.8C28.1 56.5 25.7 58.3 22.9 58.3C20.1 58.3 18 56.5 18 53.8Z"/>
+  <path data-material="teal" fill="url(#teal)" d="M32.7 54C32.7 51.2 35 49.1 37.8 49.1C40.6 49.1 42.6 51.2 42.6 53.9C42.6 56.6 40.4 58.4 37.5 58.4C34.8 58.4 32.7 56.7 32.7 54Z"/>
+  <path data-material="teal" fill="url(#teal)" d="M35.2 40.3C35.2 37.5 37.4 35.7 40.3 35.7C43 35.7 45.1 37.7 45.1 40.3C45.1 42.9 42.8 45 39.9 45C37.1 45 35.2 43 35.2 40.3Z"/>
+  <path data-material="teal" fill="url(#teal)" d="M32.5 67.4C32.5 64.7 35 62.6 37.8 62.6C40.6 62.6 42.6 64.6 42.6 67.2C42.6 70 40.3 71.9 37.4 71.9C34.7 71.9 32.5 70.1 32.5 67.4Z"/>
+  <path data-material="teal" fill="url(#teal)" d="M53.8 35.8H101C103.8 35.8 105.1 37 103.7 38.4L98 44.2C97.5 44.7 96.8 45 95.9 45H53.5C48.3 45 48.5 36.1 53.8 35.8Z"/>
+  <path data-material="teal" fill="url(#teal)" d="M50 49.4H91.1C96.6 49.4 96.6 58.4 91.4 58.4H50.2C44.6 58.4 44.7 49.4 50 49.4Z"/>
+  <path data-material="teal" fill="url(#teal)" d="M52.1 62.9H91.1C93 62.9 93.8 63.7 94.8 65.3L97.7 70.1C98.3 71.2 97.9 71.9 96.5 71.9H52C46.6 71.9 46.7 62.9 52.1 62.9Z"/>
+  <path data-material="teal" fill="url(#teal)" d="M70.2 29.7C83 15.9 100.9 8.8 120 8.9C134.4 8.8 154.6 9.3 162.7 12.7C166.2 14.2 165.8 16.1 163.8 18.5L154.6 30.2C153.1 32 151.3 32.3 147.3 31.9C135.4 30.7 129.9 30.1 121.4 31C117.1 31.4 114.4 32.8 110.2 32.6C97.3 31.7 84.4 31.6 72.3 31.6C70.3 31.6 69.3 31 70.2 29.7Z"/>
+  <path data-material="teal" fill="url(#teal)" d="M62.4 76.5C74.7 75.7 94.8 75.7 102.7 77.5C111.7 79.8 121.8 79.3 129.4 77.6C134.2 76.4 136.8 72 137.6 65H121.1C119.5 65 118.5 63.7 119.3 61.8L123.7 50.1C124.5 48.3 126.2 47.4 129.1 47.4L162.8 48.1C165.8 48.2 166.6 50 165.8 52.9L159.8 73.4C156.4 85.1 150 92.3 139.6 96.1C125.6 101 108.1 101.6 94.4 98.6C80.9 95.4 70 89.3 62 80.1C60.5 78.3 60.4 76.7 62.4 76.5Z"/>
+  <path data-material="one" fill="url(#one)" d="M222.1 10.9C225 11.8 224.7 13.5 223.8 16.5L199.9 94.8C199.2 97 197.7 98.1 195.4 98.1H175.1C173.3 98.1 172.3 96.9 172.9 94.9L189.7 37.7C185.8 40.6 181.5 41.3 171.1 41.5C168.9 41.6 167.9 40.2 168.7 38.2L171.5 30.6C172.1 29.1 173.2 28.6 174.4 28C184.8 23.5 193.7 18.2 202.3 11.9C206 9.3 209.5 10 214 10C217.4 10 220.3 10.3 222.1 10.9Z"/>
+</svg>

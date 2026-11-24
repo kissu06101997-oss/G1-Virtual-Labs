@@ -1,0 +1,118 @@
+{
+  "experimentId": "AP-PHYS-10-9.10",
+  "labId": "physics",
+  "subject": "physics",
+  "title": "Refraction in a parallel glass slab",
+  "grade": 10,
+  "curriculumReferences": [
+    {
+      "sourceId": "AP-REF-10-PS",
+      "locator": "Activity 9.10, print 184, PDF 195",
+      "editionStatus": "Prior official edition; current edition confirmation pending"
+    }
+  ],
+  "modeConfigurations": {
+    "simulation": {
+      "summary": "Curriculum-guided practical",
+      "actionTypes": [
+        "place_optic",
+        "select_incident_ray",
+        "observe_ray"
+      ],
+      "steps": [
+        "Locate the normal",
+        "Trace the ray",
+        "Compare emerging incidence"
+      ],
+      "rubricId": "PHY-GUIDED@1"
+    },
+    "experiment": {
+      "summary": "Bounded inquiry with the same apparatus and state",
+      "actionTypes": [
+        "place_optic",
+        "select_incident_ray",
+        "observe_ray"
+      ],
+      "steps": [
+        "Vary the marked incident angle",
+        "Record values with units",
+        "Interpret offset and uncertainty"
+      ],
+      "rubricId": "PHY-INQUIRY@1"
+    }
+  },
+  "sceneId": "room-physics@1",
+  "requiredApparatus": [
+    "phys.glass-slab",
+    "phys.raycard",
+    "phys.protractor",
+    "phys.ruler"
+  ],
+  "allowedSubstances": [],
+  "initialInventory": [
+    {
+      "objectId": "phys.glass-slab:1",
+      "materialId": "phys.glass-slab",
+      "quantity": {
+        "value": 1,
+        "unit": "1"
+      }
+    },
+    {
+      "objectId": "phys.raycard:1",
+      "materialId": "phys.raycard",
+      "quantity": {
+        "value": 1,
+        "unit": "1"
+      }
+    },
+    {
+      "objectId": "phys.protractor:1",
+      "materialId": "phys.protractor",
+      "quantity": {
+        "value": 1,
+        "unit": "1"
+      }
+    },
+    {
+      "objectId": "phys.ruler:1",
+      "materialId": "phys.ruler",
+      "quantity": {
+        "value": 1,
+        "unit": "1"
+      }
+    }
+  ],
+  "supportedVariableRanges": {
+    "incidentAngle": {
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "deg",
+      "admission": "synthetic_fixture_only"
+    },
+    "slabThickness": {
+      "min": 10,
+      "max": 30,
+      "step": 1,
+      "unit": "mm",
+      "admission": "synthetic_fixture_only"
+    }
+  },
+  "scienceModelIds": [
+    "PHYS-SLAB-RAY@0.1.0"
+  ],
+  "learningObjectives": [
+    "Distinguish transverse displacement from emergent direction"
+  ],
+  "safetyRules": [
+    "Virtual ray markers and pins only; reject invalid mounted geometry"
+  ],
+  "assessmentIds": [
+    "PHY-GUIDED@1",
+    "PHY-INQUIRY@1"
+  ],
+  "contentVersion": "0.1.0-research",
+  "publicationStatus": "research_fixture",
+  "datasetIds": []
+}

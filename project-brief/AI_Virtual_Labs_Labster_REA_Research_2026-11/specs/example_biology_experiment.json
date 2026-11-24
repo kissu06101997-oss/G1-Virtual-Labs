@@ -1,0 +1,113 @@
+{
+  "experimentId": "AP-BIO-09-5.1",
+  "labId": "biology",
+  "subject": "biology",
+  "title": "Onion epidermis through a compound microscope",
+  "grade": 9,
+  "curriculumReferences": [
+    {
+      "sourceId": "AP-REF-09-1",
+      "locator": "Activity 5.1, print 2–4, PDF 12–14",
+      "editionStatus": "Prior official edition; current edition confirmation pending"
+    }
+  ],
+  "modeConfigurations": {
+    "simulation": {
+      "summary": "Curriculum-guided practical",
+      "actionTypes": [
+        "select_field",
+        "select_acquired_plane",
+        "mark_visible_boundary"
+      ],
+      "steps": [
+        "Select an approved prepared slide",
+        "Inspect acquired low/high field views",
+        "Annotate a visible cell wall"
+      ],
+      "rubricId": "BIO-GUIDED@1"
+    },
+    "experiment": {
+      "summary": "Bounded inquiry with the same apparatus and state",
+      "actionTypes": [
+        "select_field",
+        "select_acquired_plane",
+        "mark_visible_boundary"
+      ],
+      "steps": [
+        "Compare documented fields",
+        "Record observation and uncertainty",
+        "Measure only with calibrated records"
+      ],
+      "rubricId": "BIO-INQUIRY@1"
+    }
+  },
+  "sceneId": "room-biology@1",
+  "requiredApparatus": [
+    "bio.compound-microscope",
+    "bio.prepared-onion-slide",
+    "bio.image-view",
+    "bio.scale-overlay"
+  ],
+  "allowedSubstances": [
+    "cleared_prepared_plant_slide"
+  ],
+  "initialInventory": [
+    {
+      "objectId": "bio.compound-microscope:1",
+      "materialId": "bio.compound-microscope",
+      "quantity": {
+        "value": 1,
+        "unit": "1"
+      }
+    },
+    {
+      "objectId": "bio.prepared-onion-slide:1",
+      "materialId": "bio.prepared-onion-slide",
+      "quantity": {
+        "value": 1,
+        "unit": "1"
+      }
+    },
+    {
+      "objectId": "bio.image-view:1",
+      "materialId": "bio.image-view",
+      "quantity": {
+        "value": 1,
+        "unit": "1"
+      }
+    },
+    {
+      "objectId": "bio.scale-overlay:1",
+      "materialId": "bio.scale-overlay",
+      "quantity": {
+        "value": 1,
+        "unit": "1"
+      }
+    }
+  ],
+  "supportedVariableRanges": {
+    "fixturePlaneIndex": {
+      "min": 0,
+      "max": 2,
+      "step": 1,
+      "unit": "1",
+      "admission": "synthetic_fixture_only"
+    }
+  },
+  "scienceModelIds": [
+    "BIO-ONION-STACK@0.1.0"
+  ],
+  "learningObjectives": [
+    "Recognize visible plant cell boundaries and limitations"
+  ],
+  "safetyRules": [
+    "Rights and calibration required for numeric outputs; pre-recorded plant images only"
+  ],
+  "assessmentIds": [
+    "BIO-GUIDED@1",
+    "BIO-INQUIRY@1"
+  ],
+  "contentVersion": "0.1.0-research",
+  "publicationStatus": "research_fixture",
+  "datasetIds": []
+}

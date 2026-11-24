@@ -1,0 +1,114 @@
+{
+  "experimentId": "AP-CHEM-10-2.3",
+  "labId": "chemistry",
+  "subject": "chemistry",
+  "title": "Acid–metal qualitative reaction and ideal bounds",
+  "grade": 10,
+  "curriculumReferences": [
+    {
+      "sourceId": "AP-REF-10-PS",
+      "locator": "Activity 2.3, print 38, PDF 49",
+      "editionStatus": "Prior official edition; current edition confirmation pending"
+    }
+  ],
+  "modeConfigurations": {
+    "simulation": {
+      "summary": "Curriculum-guided practical",
+      "actionTypes": [
+        "identify_reagent",
+        "propose_virtual_amount",
+        "compare_observation"
+      ],
+      "steps": [
+        "Identify curricular materials",
+        "Review teacher safety cue",
+        "Explain the qualitative outcome"
+      ],
+      "rubricId": "CHE-GUIDED@1"
+    },
+    "experiment": {
+      "summary": "Bounded inquiry with the same apparatus and state",
+      "actionTypes": [
+        "identify_reagent",
+        "propose_virtual_amount",
+        "compare_observation"
+      ],
+      "steps": [
+        "Form a limiting-reactant hypothesis",
+        "Compare two bounded symbolic cases",
+        "Report a theoretical amount and limitation"
+      ],
+      "rubricId": "CHE-INQUIRY@1"
+    }
+  },
+  "sceneId": "room-chemistry@1",
+  "requiredApparatus": [
+    "chem.reaction-tube",
+    "chem.stand",
+    "chem.transfer",
+    "chem.gas-observation"
+  ],
+  "allowedSubstances": [
+    "Zn",
+    "acid_equivalent"
+  ],
+  "initialInventory": [
+    {
+      "objectId": "chem.reaction-tube:1",
+      "materialId": "chem.reaction-tube",
+      "quantity": {
+        "value": 1,
+        "unit": "1"
+      }
+    },
+    {
+      "objectId": "chem.stand:1",
+      "materialId": "chem.stand",
+      "quantity": {
+        "value": 1,
+        "unit": "1"
+      }
+    },
+    {
+      "objectId": "chem.transfer:1",
+      "materialId": "chem.transfer",
+      "quantity": {
+        "value": 1,
+        "unit": "1"
+      }
+    },
+    {
+      "objectId": "chem.gas-observation:1",
+      "materialId": "chem.gas-observation",
+      "quantity": {
+        "value": 1,
+        "unit": "1"
+      }
+    }
+  ],
+  "supportedVariableRanges": {
+    "amount": {
+      "min": 0,
+      "max": 10,
+      "step": 0.5,
+      "unit": "umol",
+      "admission": "synthetic_fixture_only"
+    }
+  },
+  "scienceModelIds": [
+    "CHEM-ZN-ACID-BOUND@0.1.0"
+  ],
+  "learningObjectives": [
+    "Compare an ideal bound with a qualitative outcome"
+  ],
+  "safetyRules": [
+    "Teacher review; no gas ignition, heating or pressurization"
+  ],
+  "assessmentIds": [
+    "CHE-GUIDED@1",
+    "CHE-INQUIRY@1"
+  ],
+  "contentVersion": "0.1.0-research",
+  "publicationStatus": "research_fixture",
+  "datasetIds": []
+}

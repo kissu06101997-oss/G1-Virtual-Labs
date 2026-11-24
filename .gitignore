@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Next.js, build outputs & caches
+.next/
+out/
+dist/
+build/
+.turbo/
+.cache/
+next-env.d.ts
+tsconfig.tsbuildinfo
+
+# Local embedded database, private databases & runtime logs
+.data/
+*.db
+*.sqlite
+*.sqlite3
+*.log
+tmp/
+
+# Environment secrets & credentials (keep .env.example only)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*service-account*.json
+*credentials*.json
+
+# Vercel CLI local project link
+.vercel/
+
+# Test artifacts & reports
+playwright-report/
+test-results/
+coverage/
+
+# Temporary local export archives
+*.zip
+
+# OS & editor files
+.DS_Store
+Thumbs.db
+.env*
