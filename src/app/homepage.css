@@ -18,6 +18,9 @@
   .g1-site-header-home .g1-primary-nav { gap: clamp(12px, 1.3vw, 24px); }
   .g1-site-header-home .g1-primary-nav a[aria-current="page"] { padding-inline: 23px; }
 }
+@media (min-width: 1280px) and (max-width: 1670px) {
+  [lang="te"] .g1-site-header-home .g1-primary-nav { gap: 6px; }
+}
 
 .g1-home {
   --home-gutter: clamp(16px, 2.2vw, 37px);

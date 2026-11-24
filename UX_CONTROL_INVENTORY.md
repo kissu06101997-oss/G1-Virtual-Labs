@@ -6,7 +6,7 @@ Every visible button, tab, link, input, and disclosure control in the upgraded a
 |---|---|---|
 | Global Header (`AppHeader`) | G1 Virtual Labs logo (`BrandLogo`) | Navigates to `/` in the standard and player headers |
 | Global Header (`AppHeader`) | Primary Nav (`Laboratories`, `For teachers`, `About`, `Help`, `Contact Us` and role links) | Opens the selected workspace, catalogue or public route. `Contact Us` opens `/contact` and is active there. |
-| Global Header (`AppHeader`) | `English / తెలుగు` (`LocaleToggle`) | `POST /api/locale` (updates `g1_locale` cookie + `router.refresh()`); WCAG 2.5.3 label-in-name compliant |
+| Global Header (`AppHeader`) | `తెలుగు` or `English` (`LocaleToggle`) | Shows the language it switches to. `POST /api/locale` updates the `g1_locale` cookie and refreshes the current page. |
 | Global Header (`AppHeader`) | `Sign in` / Role badge / `Sign out` | Routes to `/sign-in` or workspace; `POST /api/auth/sign-out` revokes DB session and redirects to `/` |
 | Global Header (`AppHeader`) | Mobile Menu Toggle & Drawer | Opens/closes mobile navigation with `aria-current="page"` and `Escape` key dismissal + focus restoration |
 | `/` (Homepage) | Explore by class (seven stage links) | Opens the class-specific chooser with three subject cards and a Back link to Home. |

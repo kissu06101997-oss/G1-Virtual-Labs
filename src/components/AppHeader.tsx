@@ -228,7 +228,7 @@ export function AppHeader({
             <Link
               key={item.href + item.label}
               href={item.href}
-              className={`whitespace-nowrap rounded-lg px-2 py-1.5 text-xs font-bold transition-colors lg:text-sm ${
+              className={`rounded-lg px-2 py-1.5 text-center text-xs leading-tight font-bold text-balance transition-colors lg:text-sm ${
                 item.active
                   ? "text-[#007875]"
                   : "text-[#233c56] hover:text-[#007875]"

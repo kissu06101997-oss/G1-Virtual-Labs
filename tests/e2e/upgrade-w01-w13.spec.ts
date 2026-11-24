@@ -187,6 +187,29 @@ test.describe("G1 Virtual Labs Premium Upgrade Verification (W01–W13)", () => 
     await expect(page.locator("html")).toHaveAttribute("lang", /^en/);
   });
 
+  test("Contact Us stays clear of the language control at desktop breakpoints", async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("/");
+    const language = page.locator('[data-testid="locale-toggle"]:visible').first();
+    const contact = page.locator('.g1-primary-nav a[href="/contact"]');
+    for (const [documentLanguage, buttonText] of [["en", "తెలుగు"], ["te", "English"]]) {
+      await expect(page.locator("html")).toHaveAttribute("lang", documentLanguage);
+      await expect(language).toHaveText(buttonText);
+      for (const width of [1280, 1440, 1509, 1510, 1536, 1670]) {
+        await page.setViewportSize({ width, height: 900 });
+        await expect.poll(async () => {
+          const [link, button] = await Promise.all([contact.boundingBox(), language.boundingBox()]);
+          return link && button ? button.x - (link.x + link.width) : -1;
+        }, { message: `Header gap at ${width}px in ${documentLanguage}` }).toBeGreaterThanOrEqual(4);
+      }
+      await language.click();
+    }
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+    await contact.click();
+    await expect(page).toHaveURL(/\/contact$/);
+    await expect(contact).toHaveAttribute("aria-current", "page");
+  });
+
   test("U03 — W01/W02/W03/W06: Simulation-only assignment mode enforcement, pinned old version after newer publish, teacher preview, amendment & evidence drill-down", async ({
     page,
   }) => {
