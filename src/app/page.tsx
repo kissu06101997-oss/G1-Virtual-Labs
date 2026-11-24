@@ -20,8 +20,8 @@ const subjectDescriptions = {
 } as const;
 
 const englishIntermediateTabLabels: Partial<Record<EducationStageId, string>> = {
-  "intermediate-1": "Inter I",
-  "intermediate-2": "Inter II",
+  "intermediate-1": "1st Inter",
+  "intermediate-2": "2nd Inter",
 };
 
 export default async function HomePage({ searchParams }: { searchParams: Promise<{ grade?: string; stage?: string }> }) {

@@ -146,7 +146,7 @@ test("public navigation, responsive reflow and dependent discovery", async ({ pa
 
 test("all seven stages carry their class into the illustrated subject cards", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
-  for (const [index, label] of ["Class 6", "Class 7", "Class 8", "Class 9", "Class 10", "Inter I", "Inter II"].entries()) {
+  for (const [index, label] of ["Class 6", "Class 7", "Class 8", "Class 9", "Class 10", "1st Inter", "2nd Inter"].entries()) {
     const grade = index + 6;
     await page.goto("/");
     await page.getByTestId("education-stage-rail").getByRole("link", { name: label, exact: true }).press("Enter");
@@ -173,7 +173,7 @@ test("the English homepage class tabs stay equal-sized in one row", async ({ pag
   await page.goto("/");
   const rail = page.getByTestId("education-stage-rail");
   const tabs = rail.getByRole("link");
-  await expect(tabs).toHaveText(["Class 6", "Class 7", "Class 8", "Class 9", "Class 10", "Inter I", "Inter II"]);
+  await expect(tabs).toHaveText(["Class 6", "Class 7", "Class 8", "Class 9", "Class 10", "1st Inter", "2nd Inter"]);
   for (const width of [390, 768, 1061, 1536]) {
     await page.setViewportSize({ width, height: 900 });
     await expect.poll(() => tabs.evaluateAll(links => {
@@ -187,7 +187,7 @@ test("the English homepage class tabs stay equal-sized in one row", async ({ pag
     }), { message: `One even row at ${width}px` }).toBe(true);
   }
   await page.setViewportSize({ width: 390, height: 844 });
-  const last = rail.getByRole("link", { name: "Inter II", exact: true });
+  const last = rail.getByRole("link", { name: "2nd Inter", exact: true });
   await last.focus();
   await expect(last).toBeInViewport({ ratio: 1 });
   await last.press("Enter");
